@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import {
   ApolloClient,
@@ -10,6 +9,7 @@ import {
 
 import { onError } from "@apollo/client/link/error";
 import Form from "./Components/Form";
+import GetUsers from "./Components/GetUsers";
 
 const errorLink = onError(({ grapghqlErrors, networkError }) => {
   if (grapghqlErrors) {
@@ -25,8 +25,8 @@ const link = from([
 ]);
 
 const client = new ApolloClient({
+  uri: "http://localhost:6969/graphql",
   cache: new InMemoryCache(),
-  link: link,
 });
 
 function App() {

@@ -8,18 +8,27 @@ const Form = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [createUser, { error }] = useMutation(insertUser);
+  const [createUser, { error }] = useMutation(insertUser, {
+    variables: {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+    },
+  });
 
   const addUser = () => {
     console.log("CLICK");
-    createUser({
-      variables: {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-      },
-    });
+    // createUser({
+    //   variables: {
+    //     firstName: firstName,
+    //     lastName: lastName,
+    //     email: email,
+    //     password: password,
+    //   },
+    // });
+
+    createUser();
 
     if (error) {
       console.log(error);
